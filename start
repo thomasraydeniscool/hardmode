@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIR="$(dirname "$0")"
+
+cd "${DIR}"
+
+cp -a src/. dist/
+
+cd "${DIR}/dist"
+
+java -jar paper.jar
