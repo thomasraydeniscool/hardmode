@@ -22,7 +22,7 @@ if [ ! -f "$PAPER_OUTPUT_PATH" ] || [ -n "$PAPER_FORCE_DOWNLOAD" ]; then
     
     echo "Downloading PaperMC $PAPER_TARGET_VERSION from $url ..."
     
-    wget "$url" -P "$PAPER_OUTPUT_PATH"
+    curl --progress-bar -L "$url" -o "$PAPER_OUTPUT_PATH"
     
     if [ ! -f "$PAPER_OUTPUT_PATH" ]; then
       echo "ERROR: failed to download from $url (status=$?)"
