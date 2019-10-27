@@ -1,15 +1,16 @@
 version: '3'
 
 services:
-  minecraft:
+  hardmode-server:
     image: hardmode
     ports:
       - '25565:25565'
     volumes:
       - 'dist:/data'
     environment:
-      - PAPER_OUTPUT_PATH="/data/paper.jar"
-      - .env
+      PAPER_OUTPUT_PATH: '/data/paper.jar'
+      MINECRAFT_VERSION: '1.14.4'
     restart: always
 
-volumes: dist:
+volumes:
+  dist:

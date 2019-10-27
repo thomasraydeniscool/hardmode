@@ -1,11 +1,18 @@
 FROM openjdk:8u212-jre-alpine
 
-ARG ARCH=amd64
+RUN apk add --no-cache -U \
+  openssl \
+  curl \
+  git \
+  rsync \
+  nano
 
 EXPOSE 25565
 
-WORKDIR /src
+VOLUME [ "/data" ]
 
-COPY src .
+COPY src /src
 
-CMD [ "./start.sh" ]
+RUN chmod -R +x /src
+
+ENTRYPOINT [ "/src/start.sh" ]
