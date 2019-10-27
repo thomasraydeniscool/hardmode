@@ -1,0 +1,49 @@
+import org.apache.tools.ant.filters.ReplaceTokens // We use this to replace version in plugin.yml
+
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group 'club.hardmode.spawn'
+version '1.0'
+archivesBaseName = 'spawn'
+
+def bukkitVersion = '1.14.4-R0.1-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots'
+    }
+
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+     compileOnly (group: 'org.spigotmc', name: 'spigot-api', version: bukkitVersion)
+}
+
+/* This will replace '@VERSION@' in the plugin.yml with the version declared above, just put '@VERSION@' for the version in the plugin.yml */
+processResources {
+    filter ReplaceTokens, tokens: [
+            "VERSION": version
+    ]
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'HardmodeSpawn',
+                'Implementation-Version': version,
+                'Main-Class': 'club.hardmode.spawn.HardmodeSpawn'
+    }
+    baseName = 'HardmodeSpawn'
+    from { configurations.compile.collect({ it.isDirectory() ? it : zipTree(it) }) }
+    with jar
+}

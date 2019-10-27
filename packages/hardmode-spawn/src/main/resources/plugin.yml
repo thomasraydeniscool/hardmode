@@ -1,0 +1,7 @@
+name: HardmodeSpawn
+author: Thomas Rayden
+description: Spawn protection used for the Hardmode Minecraft server
+website: https://github.com/thomasraydeniscool
+main: club.hardmode.spawn.HardmodeSpawn
+version: '@VERSION@'
+api-version: 1.13
