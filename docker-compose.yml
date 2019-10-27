@@ -6,8 +6,10 @@ services:
     ports:
       - '25565:25565'
     volumes:
-      - 'mc:/data'
+      - 'dist:/data'
     environment:
+      - PAPER_OUTPUT_PATH="/data/paper.jar"
+      - .env
     restart: always
 
-volumes: mc:
+volumes: dist:

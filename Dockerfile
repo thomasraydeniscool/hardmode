@@ -2,8 +2,10 @@ FROM openjdk:8u212-jre-alpine
 
 ARG ARCH=amd64
 
-EXPOSE 25565 25575
+EXPOSE 25565
 
-COPY start.sh /start.sh
+WORKDIR /src
 
-CMD [ "/start.sh" ]
+COPY src .
+
+CMD [ "./start.sh" ]
