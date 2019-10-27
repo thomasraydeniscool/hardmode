@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  minecraft:
+    image: hardmode
+    ports:
+      - '25565:25565'
+    volumes:
+      - 'mc:/data'
+    environment:
+    restart: always
+
+volumes: mc:

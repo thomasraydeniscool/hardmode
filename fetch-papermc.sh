@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #
 # How to run this script?

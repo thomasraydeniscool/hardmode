@@ -4,4 +4,6 @@ ARG ARCH=amd64
 
 EXPOSE 25565 25575
 
-CMD ["./start"]
+COPY start.sh /start.sh
+
+CMD [ "/start.sh" ]
