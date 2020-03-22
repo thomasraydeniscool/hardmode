@@ -8,7 +8,7 @@ services:
     volumes:
       - 'dist:/data'
     environment:
-      PAPER_OUTPUT_PATH: '/data/paper.jar'
+      ENTRYPOINT: '/data/paper.jar'
       MINECRAFT_VERSION: '1.14.4'
     restart: always
 
